@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class TodoController {
     private final TodoRepository repository;
@@ -30,22 +31,30 @@ public class TodoController {
         return item;
     }
 
-    @PostMapping(path = "/todos", consumes = "application/json", produces = "application/json")
+    @PostMapping(path = "/todo", consumes = "application/json", produces = "application/json")
     public TodoItem addToDo(@RequestBody TodoItem item){
-        repository.save(item);
+        return repository.save(item);
+    }
+
+    @PostMapping(path = "/todos", consumes = "application/json", produces = "application/json")
+    public TodoItem[] addToDo(@RequestBody(required = false) TodoItem[] item){
+        for (TodoItem it: item) {
+            repository.save(it);
+        }
         return item;
     }
 
     @PutMapping(path = "/todos", consumes = "application/json", produces = "application/json")
     public TodoItem addOrModify(@RequestBody TodoItem item){
-        Optional<TodoItem> op = repository.findById(item.id);
-        if (op.isPresent()){
-            repository.delete(op.get());
-            repository.save(item);
-        }
-        else{
-            repository.save(item);
-        }
-        return item;
+
+        return repository.findById(item.id)
+                .map(it -> {
+                    it.title = item.title;
+                    it.state = item.state;
+                    return repository.save(it);
+                })
+                .orElseGet(() -> {
+                    return repository.save(item);
+                });
     }
 }

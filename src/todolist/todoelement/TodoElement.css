@@ -1,0 +1,77 @@
+.Element {
+    align:left;
+    background-color: #ffffff;
+    width: 70%;
+    height: 20px;
+    border: 1px;
+    border-color: #ffffff;
+    border-style: solid;
+    padding: 10px;
+    box-shadow: 0px 0px 1px #000;
+    list-style-type: none;
+    margin: 3px;
+    /*cursor: pointer;*/
+    transition: 1.4s;
+    /* make the list items unselectable */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.CheckedElement {
+    align:left;
+    background: #ffffff;
+    color: #e5e5e5;
+    text-decoration: line-through;
+    width: 70%;
+    height: 20px;
+    border: 1px;
+    border-color: #ffffff;
+    border-style: solid;
+    padding: 10px;
+    box-shadow: 0px 0px 1px #000;
+    list-style-type: none;
+    margin: 3px;
+    /*cursor: pointer;*/
+    transition: 0.4s;
+    /* make the list items unselectable */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Darker background-color on hover */
+.Element:hover {
+    background: #ddd;
+}
+
+/* Style the input */
+.inputAddNew {
+    padding: 0px;
+    border:none;
+    font-size: 16px;
+    width: 65%;
+    margin: 0;
+
+}
+
+/* Style the "Add" button */
+.addBtn {
+    margin: 0;
+    padding: 3px;
+    width: 25%;
+    background: #d9d9d9;
+    color: #555;
+    float: none;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.4s;
+    border-radius: 0;
+}
+
+.addBtn:hover {
+    background-color: #bbb;
+}
