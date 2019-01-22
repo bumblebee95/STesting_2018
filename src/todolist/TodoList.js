@@ -130,7 +130,7 @@ class TodoList extends Component{
                        }
                         return (
                             <TodoElement
-                                    key={elem.id}
+                                    id={elem.id}
                                     title={elem.title}
                                     completed={elem.completed}
                                     checkBoxChanged={this.todoElementCheckBoxHandler.bind(this,elem.id)}
@@ -148,8 +148,9 @@ class TodoList extends Component{
         return (
             <div>
                 <div align={"center"} size={"80%"} background="red">
-                    <form onSubmit={this.handleSubmitAndCreateNewTodo}>
+                    <form id="add_todo" onSubmit={this.handleSubmitAndCreateNewTodo}>
                         <input
+                            id="todo_title"
                             className="inputAddNew"
                             ref={(inp) => {this.inputElement = inp} }
                             type={"text"}
